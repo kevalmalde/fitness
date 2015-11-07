@@ -9,5 +9,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        WorkoutDetailFragment flag = (WorkoutDetailFragment) getFragmentManager().findFragmentById(R.id.detail_flag);
+        flag.setWorkoutId(1);
     }
 }
