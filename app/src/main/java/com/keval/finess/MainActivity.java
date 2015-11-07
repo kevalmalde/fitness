@@ -1,9 +1,11 @@
 package com.keval.finess;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity implements WorkoutListFragment.WorkoutListListener extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements WorkoutListFragment.WorkoutListListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +15,12 @@ public class MainActivity implements WorkoutListFragment.WorkoutListListener ext
 
     @Override
     public void itemClicked(long id) {
-        WorkoutDetailFragment flag = (WorkoutDetailFragment) getFragmentManager().findFragmentById(R.id.detail_flag);
-        flag.setWorkoutId(2);
+        WorkoutDetailFragment details = new WorkoutDetailFragment();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        details.setWorkoutId(id);
+        ft.replace(R.id.fragment_container, details);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 }

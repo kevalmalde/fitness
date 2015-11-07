@@ -27,9 +27,9 @@ public class WorkoutListFragment extends ListFragment {
     private WorkoutListListener listener;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        listener = (WorkoutListListener) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.listener = (WorkoutListListener) activity;
     }
 
     @Override
