@@ -10,6 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         WorkoutDetailFragment flag = (WorkoutDetailFragment) getFragmentManager().findFragmentById(R.id.detail_flag);
-        flag.setWorkoutId(1);
+        flag.setWorkoutId(2);
     }
 }

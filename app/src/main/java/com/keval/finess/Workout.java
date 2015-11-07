@@ -5,7 +5,7 @@ package com.keval.finess;
  */
 public class Workout {
     private String name;
-    private String descripton;
+    private String description;
 
     public static final Workout[] workouts = {
             new Workout("The Limb Loosener",
@@ -18,17 +18,17 @@ public class Workout {
                     "500 meter run\n21 x 1.5 pood kettleball swing\n21 x pull-ups")
     };
 
-    private Workout(String name, String descripton) {
+    private Workout(String name, String description) {
         this.name = name;
-        this.descripton = descripton;
+        this.description = description;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDescripton() {
-        return descripton;
+    public String getDescription() {
+        return description;
     }
 
     @Override
