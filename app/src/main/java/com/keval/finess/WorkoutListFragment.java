@@ -1,6 +1,7 @@
 package com.keval.finess;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.app.ListFragment;
 import android.view.LayoutInflater;
@@ -19,8 +20,17 @@ import android.widget.ListView;
  */
 public class WorkoutListFragment extends ListFragment {
 
-//    private OnFragmentInteractionListener mListener;
+    static interface WorkoutListListener{
+        void itemClicked(long id);
+    }
 
+    private WorkoutListListener listener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (WorkoutListListener) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,31 +44,11 @@ public class WorkoutListFragment extends ListFragment {
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }
-//
-//    @Override
-//    public void onListItemClick(ListView l, View v, int position, long id) {
-//        super.onListItemClick(l, v, position, id);
-//
-//        if (null != mListener) {
-//            // Notify the active callbacks interface (the activity, if the
-//            // fragment is attached to one) that an item has been selected.
-//            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
-//        }
-//    }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        public void onFragmentInteraction(String id);
-//    }
-
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        if(listener != null){
+            listener.itemClicked(id);
+        }
+    }
 }
