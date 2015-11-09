@@ -1,5 +1,6 @@
 package com.keval.finess;
 
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,22 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, DetailActivity.class);
             intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID,(int) id );
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // initialize variables
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        // check to see if stack is empty
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+            ft.commit();
+        }
+        else {
+            super.onBackPressed();
         }
     }
 }
